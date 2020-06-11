@@ -51,6 +51,28 @@ REMOTES = {
             u"refToInteger": {u"$ref": u"#/$defs/integer"},
         }
     },
+    "subSchemas-ids.json": {
+        u"$id": u"http://localhost:1234/subSchemas-ids.json",
+        u"allOf": [
+            {u"$ref": u"#/$defs/referencing"}
+        ],
+        u"$defs": {
+            u"referencing": {
+                u"$id": u"referencing.json",
+                u"allOf": [
+                    {u"$ref": u"#/$defs/referenced"}
+                ],
+                u"$defs": {
+                    u"referenced": {
+                        u"enum": [u"should-be-valid"]
+                    }
+                }
+            },
+            u"referenced": {
+                u"enum": [u"should-NOT-be-valid"]
+            }
+        }
+    },
     "folder/folderInteger.json": {u"type": u"integer"}
 }
 REMOTES_DIR = os.path.join(ROOT_DIR, "remotes")
